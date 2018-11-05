@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from '../constants/colors';
 import Status from './Status';
+import Table from './Table';
 
 const Wrapper = styled.div`
   margin: 10px 0;
@@ -88,7 +89,7 @@ const Node = ({node, expanded, toggleNodeExpanded}) => (
     </Body>
     {expanded && (
       <BlocksWrapper>
-        Blocks go here
+        <Table node={node}/>
       </BlocksWrapper>
     )}
   </Wrapper>
