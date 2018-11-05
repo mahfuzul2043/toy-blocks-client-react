@@ -9,7 +9,9 @@ class Table extends React.Component {
             <div>
                 <table>
                     <tbody>
-                        { node.blocks.map((block, index) => (<tr key={index}><td>{block.id}</td><td>{block.attributes.data}</td></tr>)) }
+                        { node.blocks.map((block, index) =>
+                            (<tr key={index}><td>{block.id}</td><td>{block.attributes.data}</td></tr>)) 
+                        }
                     </tbody>
                 </table>
             </div>

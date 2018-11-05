@@ -60,7 +60,6 @@ export default function nodesReducer(state = initialState().nodes, action) {
       };
       case FETCH_BLOCKS:
       list = state.list;
-      console.log(action.blocks);
       
       nodeIndex = state.list.findIndex(p => p.url === action.node.url);
       if (nodeIndex >= 0) {
