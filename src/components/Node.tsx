@@ -11,6 +11,8 @@ import { styled } from "@mui/material/styles";
 import colors from "../constants/colors";
 import Status from "./Status";
 import { Node as NodeType } from "../types/Node";
+import { Block as BlockType } from "../types/Block";
+import Block from './Block';
 
 type Props = {
   node: NodeType;
@@ -80,7 +82,10 @@ const Node: React.FC<Props> = ({ node, expanded, toggleNodeExpanded }) => {
         </BoxSummaryContent>
       </AccordionSummaryContainer>
       <AccordionDetails>
-        <Typography>Blocks go here</Typography>
+        {node.loadingBlocks && <Typography>Loading...</Typography>}
+        {!node.loadingBlocks && node.blocks && node.blocks.map((block: BlockType) => <Block key={block.attributes.hash} block={block} />)}
+        {!node.loadingBlocks && !node.blocksError && node.blocks?.length === 0 && <Typography>No blocks were found for this node.</Typography>}
+        {!node.loadingBlocks && node.blocksError && <Typography color='secondary'>{node.blocksError}</Typography>}
       </AccordionDetails>
     </AccordionRoot>
   );
